@@ -65,6 +65,15 @@ class BubbleSortVisualizer:
             command=self.reset,
         )
 
+        # Legende zur Verdeutlichung der Farbcodierung
+        self.legend_frame = tk.Frame(self.root)
+        self.legend_entries: List[Tuple[str, str]] = [
+            ("Ausgangszustand", self.DEFAULT_COLOR),
+            ("Vergleich", self.COMPARE_COLOR),
+            ("Tausch", self.SWAP_COLOR),
+            ("Sortiert", self.SORTED_COLOR),
+        ]
+
         # Variablen zur Steuerung der Animation
         self.animation_speed_ms = 800  # Zeitabstand zwischen den Schritten
         self.step_generator: Optional[
@@ -97,11 +106,41 @@ class BubbleSortVisualizer:
         self.input_label.pack(pady=(15, 5))
         self.input_entry.pack()
         self.canvas.pack(pady=20)
+        self._build_legend()
 
         self.start_button.pack(side=tk.LEFT, padx=5)
         self.pause_button.pack(side=tk.LEFT, padx=5)
         self.reset_button.pack(side=tk.LEFT, padx=5)
         self.button_frame.pack(pady=10)
+
+    def _build_legend(self) -> None:
+        """Erstellt eine Legende, die die Farbcodierung erklärt."""
+
+        for index, (label_text, color) in enumerate(self.legend_entries):
+            entry_frame = tk.Frame(self.legend_frame)
+            color_indicator = tk.Canvas(
+                entry_frame,
+                width=18,
+                height=18,
+                highlightthickness=1,
+                highlightbackground="#d0d0d0",
+            )
+            color_indicator.create_rectangle(
+                2,
+                2,
+                16,
+                16,
+                fill=color,
+                outline="",
+            )
+            color_indicator.pack(side=tk.LEFT)
+
+            label = tk.Label(entry_frame, text=label_text)
+            label.pack(side=tk.LEFT, padx=(6, 0))
+
+            entry_frame.pack(side=tk.LEFT, padx=(0 if index == 0 else 14, 14))
+
+        self.legend_frame.pack(pady=(0, 10))
 
     # ------------------------------------------------------------------
     # Bedienlogik
