@@ -6,7 +6,7 @@ Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort und Heap Sor
 Perfekt für Einsteiger, die Sortieralgorithmen Schritt für Schritt verstehen möchten.
 
 ✨ Features
-- Eingabe: 5 Zahlen frei wählbar (ein- oder mehrstellig, z. B. 8, 12, 88, 75, 106)
+- Eingabe: 10 Zahlen frei wählbar (ein- oder mehrstellig, z. B. 8, 12, 88, 75, 106, 42, 7, 19, 33, 58)
 - Algorithmus-Auswahl: Über Option-Buttons (Radio-Buttons) wählbar:
   Bubble, Selection, Insertion, Merge, Quick, Heap
 - Visualisierung: Darstellung der Werte als Balkendiagramm mit farblicher Hervorhebung jeder Aktion
@@ -31,7 +31,7 @@ Perfekt für Einsteiger, die Sortieralgorithmen Schritt für Schritt verstehen m
 1. Repository klonen oder Dateien herunterladen
 2. Programm starten:
    python bubble_sort_visualizer.py
-3. Fünf Zahlen in die Eingabefelder eintragen
+3. Zehn Zahlen in die Eingabefelder eintragen
 4. Über Option-Buttons das Sortierverfahren auswählen
 5. Start klicken und die Animation beobachten
 
