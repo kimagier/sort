@@ -30,6 +30,7 @@ class SortingVisualizer:
     TIMER_UPDATE_INTERVAL_MS = 20
 
     BAR_PADDING = 40  # Abstand links und rechts im Canvas
+    INPUT_FIELD_COUNT = 10  # Anzahl der zulässigen Eingabefelder
 
     def __init__(self) -> None:
         self.root = tk.Tk()
@@ -51,9 +52,13 @@ class SortingVisualizer:
         )
 
         # GUI-Elemente für die Benutzereingabe
+        example_values = "8, 12, 88, 75, 106, 42, 7, 19, 33, 58"
         self.input_label = tk.Label(
             self.left_frame,
-            text="Bitte geben Sie fünf Zahlen ein (z. B. 8, 12, 88, 75, 106):",
+            text=(
+                f"Bitte geben Sie {self.INPUT_FIELD_COUNT} Zahlen ein "
+                f"(z. B. {example_values}):"
+            ),
         )
         self.input_frame = tk.Frame(self.left_frame)
         self.input_entries: List[tk.Entry] = []
@@ -231,7 +236,7 @@ class SortingVisualizer:
         self.input_label.pack(pady=(15, 5))
 
         self.input_frame.pack(pady=(0, 10))
-        for column in range(5):
+        for column in range(self.INPUT_FIELD_COUNT):
             entry = tk.Entry(self.input_frame, width=6, justify="center")
             entry.grid(row=0, column=column, padx=5)
             self.input_entries.append(entry)
@@ -638,7 +643,7 @@ class SortingVisualizer:
     # Datenverarbeitung
     # ------------------------------------------------------------------
     def _parse_numbers(self) -> Optional[List[int]]:
-        """Liest fünf einzelne Eingabefelder aus und wandelt sie in ganze Zahlen um."""
+        """Liest die Eingabefelder aus und wandelt sie in ganze Zahlen um."""
 
         raw_values = []
         for index, entry in enumerate(self.input_entries, start=1):
@@ -646,7 +651,7 @@ class SortingVisualizer:
             if not value:
                 messagebox.showerror(
                     "Eingabefehler",
-                    "Bitte füllen Sie alle fünf Zahlenfelder aus.",
+                    f"Bitte füllen Sie alle {self.INPUT_FIELD_COUNT} Zahlenfelder aus.",
                 )
                 entry.focus_set()
                 return None
