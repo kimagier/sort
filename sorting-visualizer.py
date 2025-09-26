@@ -30,7 +30,7 @@ class SortingVisualizer:
     TIMER_UPDATE_INTERVAL_MS = 20
 
     BAR_PADDING = 40  # Abstand links und rechts im Canvas
-    INPUT_FIELD_COUNT = 10  # Anzahl der zulässigen Eingabefelder
+    INPUT_FIELD_COUNT = 5  # Anzahl der zulässigen Eingabefelder
 
     def __init__(self) -> None:
         self.root = tk.Tk()
@@ -52,7 +52,7 @@ class SortingVisualizer:
         )
 
         # GUI-Elemente für die Benutzereingabe
-        example_values = "8, 12, 88, 75, 106, 42, 7, 19, 33, 58"
+        example_values = "8, 12, 42, 19, 33"
         self.input_label = tk.Label(
             self.left_frame,
             text=(
